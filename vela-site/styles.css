@@ -1,0 +1,418 @@
+/* ============================================================================
+   VELA — styles.css  ·  THE APPEARANCE
+   ============================================================================
+
+   CSS describes how the HTML LOOKS. The basic pattern is always:
+
+       selector {            <- WHICH elements to style
+         property: value;    <- WHAT to change about them
+       }
+
+   e.g.  .hero__title { color: red; }  =  "make text in .hero__title red".
+
+   A "class" in HTML (class="hero__title") is targeted in CSS with a dot:
+   ".hero__title". An id (id="nav") is targeted with a hash: "#nav".
+
+   We've grouped the file into sections. Read them top to bottom.
+   ============================================================================ */
+
+
+/* ----------------------------------------------------------------------------
+   1. VARIABLES (a.k.a. "design tokens")
+   These are reusable values. Define a colour ONCE here, use it everywhere with
+   var(--name). Change it in one place -> the whole site updates.
+
+   ⭐ WANT A DIFFERENT LOOK? Change --accent below. Try one of:
+        #ff4d2e (vermilion, default)   #3a57ff (cobalt)
+        #c6f24e (acid green)           #16140f (mono / no colour)
+   ---------------------------------------------------------------------------- */
+:root {
+  /* Colours */
+  --bg:        #f4f1ea;  /* page background (a warm off-white "paper") */
+  --fg:        #16140f;  /* main text colour (near-black "ink") */
+  --muted:     #42403a;  /* secondary / quieter text */
+  --line:      #dcd6c8;  /* thin divider lines */
+  --card:      #ece8dd;  /* placeholder card fill */
+  --accent:    #ff4d2e;  /* the one pop of colour */
+  --on-accent: #ffffff;  /* text colour that sits ON TOP of the accent */
+
+  /* Fonts (declared once, reused everywhere) */
+  --sans:  'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --mono:  'Space Mono', monospace;
+
+  /* The left/right page padding. clamp(min, preferred, max) lets it grow with
+     the screen but never gets smaller than 20px or bigger than 72px. */
+  --pad: clamp(20px, 5vw, 72px);
+}
+
+
+/* ----------------------------------------------------------------------------
+   2. RESET + BASE
+   Browsers add default margins/sizes. We zero them out so we start clean.
+   ---------------------------------------------------------------------------- */
+
+/* "* " means EVERY element. border-box makes width include padding (sane sizing). */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;                              /* remove the default body margin */
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  overflow-x: hidden;                     /* never scroll sideways */
+  -webkit-font-smoothing: antialiased;    /* crisper text on Mac */
+}
+
+/* When you click a #link, scroll smoothly instead of jumping instantly. */
+html { scroll-behavior: smooth; }
+
+/* Highlighted text uses the accent colour. */
+::selection { background: var(--accent); color: var(--on-accent); }
+
+
+/* ----------------------------------------------------------------------------
+   3. REUSABLE HELPERS
+   Small classes used in lots of places.
+   ---------------------------------------------------------------------------- */
+
+/* A small uppercase monospace label, e.g. "(02) Selected Work" */
+.label {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.12em;       /* spread the letters out a little */
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+  margin: 0;
+}
+.accent { color: var(--accent); }   /* paint just this bit with the accent */
+
+/* A "section" = one full band of the page with consistent vertical/side padding */
+.section { padding: clamp(80px, 10vw, 150px) var(--pad); }
+
+/* --- Buttons --------------------------------------------------------------- */
+.btn {
+  display: inline-flex;            /* sit text + arrow on one line, centred */
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 500;
+  text-decoration: none;          /* remove the default link underline */
+  border-radius: 100px;           /* fully rounded "pill" shape */
+  transition: transform 0.3s ease;   /* animate the lift on hover */
+}
+/* :hover means "while the mouse is over it" */
+.btn:hover { transform: translateY(-3px); }   /* nudge up 3px */
+
+.btn--primary { background: var(--accent); color: var(--on-accent); font-size: 16px; padding: 16px 26px; }
+.btn--pill-sm { background: var(--accent); color: var(--on-accent); font-size: 14px; padding: 10px 18px; }
+
+/* An underlined text link (the secondary hero action) */
+.link-underline {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--fg);   /* draw our own underline */
+  padding-bottom: 3px;
+  transition: color 0.25s, border-color 0.25s;
+}
+.link-underline:hover { color: var(--accent); border-color: var(--accent); }
+
+
+/* ----------------------------------------------------------------------------
+   4. NAVIGATION
+   ---------------------------------------------------------------------------- */
+.nav {
+  position: fixed;                /* stays pinned even as you scroll */
+  top: 0; left: 0; right: 0;
+  z-index: 50;                    /* sits above other content */
+  display: flex;                  /* lay children out in a row */
+  align-items: center;
+  justify-content: space-between; /* push logo left, menu right */
+  gap: 24px;
+  padding: 16px var(--pad);
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  /* animate the background appearing when we add the .scrolled class via JS */
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+/* JS adds this class once you scroll down a little. */
+.nav.scrolled {
+  background: color-mix(in srgb, var(--bg) 82%, transparent);  /* translucent paper */
+  border-bottom-color: var(--line);
+  backdrop-filter: saturate(180%) blur(14px);                  /* frosted-glass blur */
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+}
+
+.nav__logo { display: flex; align-items: baseline; gap: 8px; text-decoration: none; color: var(--fg); }
+.nav__logo-mark { font-weight: 600; font-size: 22px; letter-spacing: -0.03em; }
+.nav__logo-sub  { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+.nav__right { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 30px); }
+.nav__meta  { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.nav__sep   { opacity: 0.5; }
+.nav__link  { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--fg); transition: color 0.25s; }
+.nav__link:hover { color: var(--accent); }
+
+/* The little pulsing "available" dot. The animation is defined at the bottom. */
+.dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+  animation: pulse 2.2s ease-in-out infinite;   /* run "pulse" forever */
+}
+
+
+/* ----------------------------------------------------------------------------
+   5. HERO
+   ---------------------------------------------------------------------------- */
+.hero {
+  min-height: 100vh;              /* at least the full screen height */
+  display: flex;
+  flex-direction: column;         /* stack children top-to-bottom */
+  justify-content: center;        /* centre them vertically */
+  padding: 150px var(--pad) 70px;
+  position: relative;             /* so the "scroll" hint can position inside it */
+}
+.hero__labels { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.label--right { text-align: right; }
+
+.hero__title {
+  font-family: var(--sans);
+  font-weight: 500;
+  /* clamp() = responsive font size: 46px on phones up to 158px on big screens */
+  font-size: clamp(46px, 9.2vw, 158px);
+  line-height: 0.92;              /* tight lines for big display type */
+  letter-spacing: -0.035em;
+  margin: 36px 0 0;
+}
+/* The italic serif word inside the headline */
+.hero__title em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.04em;
+  color: var(--accent);
+}
+
+.hero__sub { font-size: clamp(16px, 1.55vw, 21px); line-height: 1.5; color: var(--muted); max-width: 54ch; margin: 38px 0 0; }
+.hero__cta { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 42px; }
+
+.hero__scroll {
+  position: absolute; bottom: 30px; left: var(--pad);
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+}
+.bob { display: inline-block; animation: bob 2.4s ease-in-out infinite; }   /* the bouncing ↓ */
+
+/* These hero pieces fade up on first load. (Defined keyframes at the bottom.)
+   They animate themselves — no JavaScript needed. */
+.hero__labels { animation: fadeUp 0.8s cubic-bezier(.2,.7,.2,1) both; animation-delay: 0.05s; }
+.hero__title  { animation: fadeUp 0.9s cubic-bezier(.2,.7,.2,1) both; animation-delay: 0.16s; }
+.hero__sub    { animation: fadeUp 0.9s cubic-bezier(.2,.7,.2,1) both; animation-delay: 0.30s; }
+.hero__cta    { animation: fadeUp 0.9s cubic-bezier(.2,.7,.2,1) both; animation-delay: 0.44s; }
+
+
+/* ----------------------------------------------------------------------------
+   6. MARQUEE (the infinite sideways-scrolling words)
+   ---------------------------------------------------------------------------- */
+.marquee { overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 20px 0; }
+.marquee__track {
+  display: flex;
+  width: max-content;             /* as wide as its contents (both copies) */
+  animation: marquee 32s linear infinite;   /* slide left forever */
+}
+.marquee__group {
+  display: flex; align-items: center; white-space: nowrap;
+  font-family: var(--mono);
+  font-size: clamp(18px, 2.4vw, 34px);
+  text-transform: uppercase;
+}
+.marquee__group i { color: var(--accent); margin: 0 0.7em; font-style: normal; }   /* the ◆ separators */
+
+
+/* ----------------------------------------------------------------------------
+   7–8. SELECTED WORK (featured case study)
+   ---------------------------------------------------------------------------- */
+.work { padding-bottom: clamp(60px, 7vw, 110px); }
+.work__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; margin-bottom: clamp(40px, 5vw, 70px); }
+.work__intro { font-size: clamp(15px, 1.4vw, 18px); color: var(--muted); max-width: 42ch; margin: 0; text-align: right; line-height: 1.45; }
+
+/* The case study is a 2-column grid: image | story. */
+.case {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: clamp(32px, 4vw, 56px) 0;
+}
+
+/* The image. position:relative lets us pin the “Live site” badge on top of it. */
+.case__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--card);
+  /* striped fallback shows if the photo fails to load */
+  background-image: repeating-linear-gradient(135deg, color-mix(in srgb, var(--line) 70%, transparent) 0 1px, transparent 1px 11px);
+  border: 1px solid var(--line);
+}
+.case__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;            /* fill the box without squashing the photo */
+  display: block;
+  transition: transform 0.6s ease;
+}
+.case__media:hover img { transform: scale(1.04); }   /* gentle zoom on hover */
+.case__badge {
+  position: absolute; top: 14px; left: 14px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--accent); color: var(--on-accent);
+  padding: 6px 12px; border-radius: 100px;
+}
+
+.case__name { font-weight: 500; font-size: clamp(32px, 4.4vw, 64px); letter-spacing: -0.02em; line-height: 1; margin: 14px 0 0; }
+.case__line { font-size: clamp(16px, 1.6vw, 21px); margin: 16px 0 0; }
+.case__desc { font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 48ch; margin: 14px 0 0; }
+
+.case__meta { display: flex; flex-wrap: wrap; gap: 28px; margin: 26px 0; padding: 0; }
+.case__meta dt { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.case__meta dd { margin: 0; font-size: 15px; }
+
+.work__more { font-size: clamp(15px, 1.4vw, 18px); color: var(--muted); margin: clamp(32px, 4vw, 50px) 0 0; }
+.work__more a { color: var(--accent); text-decoration: none; }
+.work__more a:hover { text-decoration: underline; }
+
+
+/* ----------------------------------------------------------------------------
+   9. SERVICES
+   ---------------------------------------------------------------------------- */
+.service {
+  display: grid;
+  grid-template-columns: clamp(70px, 8vw, 130px) 1fr;   /* big number | content */
+  gap: clamp(20px, 4vw, 60px);
+  align-items: start;
+  padding: clamp(34px, 4vw, 56px) 0;
+  border-top: 1px solid var(--line);
+}
+.service--last { border-bottom: 1px solid var(--line); }   /* close the list with a line */
+.service__num   { font-family: var(--serif); font-style: italic; font-size: clamp(48px, 7vw, 110px); line-height: 0.8; color: var(--accent); }
+.service__title { font-weight: 500; font-size: clamp(28px, 3.6vw, 52px); letter-spacing: -0.02em; margin: 0 0 18px; line-height: 1.02; }
+.service__desc  { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.55; color: var(--muted); max-width: 60ch; margin: 0 0 26px; }
+
+/* A row of small mono tags separated by thin lines */
+.taglist { display: flex; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+.taglist span { padding: 0 18px; border-right: 1px solid var(--line); }
+.taglist span:last-child { border-right: none; }   /* no line after the last tag */
+
+
+/* ----------------------------------------------------------------------------
+   10. STUDIO
+   ---------------------------------------------------------------------------- */
+.studio__statement { font-weight: 400; font-size: clamp(26px, 3.6vw, 54px); line-height: 1.18; letter-spacing: -0.02em; max-width: 24ch; margin: 30px 0 clamp(50px, 6vw, 90px); }
+.studio__statement em { font-family: var(--serif); font-style: italic; color: var(--accent); }
+
+/* auto-fit = make as many columns as fit, each at least 230px wide */
+.principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: clamp(28px, 4vw, 56px); border-top: 1px solid var(--line); padding-top: clamp(34px, 4vw, 54px); }
+.principle__num   { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: var(--accent); }
+.principle__title { font-weight: 500; font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -0.01em; margin: 14px 0 12px; }
+.principle__desc  { font-size: 16px; line-height: 1.55; color: var(--muted); margin: 0; }
+
+
+/* ----------------------------------------------------------------------------
+   11. PROCESS (4 cards)
+   The 1px gap + background trick draws hairlines BETWEEN the cards.
+   ---------------------------------------------------------------------------- */
+.process { padding-top: clamp(40px, 5vw, 80px); }
+.process__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1px;                       /* the gap shows the background colour... */
+  background: var(--line);        /* ...which is this line colour = hairlines */
+  border: 1px solid var(--line);
+}
+.process__cell { background: var(--bg); padding: clamp(24px, 2.6vw, 38px); }
+.process__num   { font-family: var(--serif); font-style: italic; font-size: 44px; color: var(--accent); line-height: 1; }
+.process__title { font-weight: 500; font-size: 22px; margin: 16px 0 10px; letter-spacing: -0.01em; }
+.process__desc  { font-size: 15px; line-height: 1.5; color: var(--muted); margin: 0; }
+
+
+/* ----------------------------------------------------------------------------
+   12. CONTACT + FOOTER (the dark band)
+   Here we FLIP the colours: dark background, light text.
+   ---------------------------------------------------------------------------- */
+.contact {
+  background: var(--fg);          /* dark */
+  color: var(--bg);               /* light text */
+  padding-bottom: clamp(36px, 4vw, 56px);
+}
+/* On a dark background we make "muted" text a see-through version of light. */
+.label--invert { color: color-mix(in srgb, var(--bg) 55%, transparent); font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; }
+
+.contact__title { font-weight: 500; font-size: clamp(40px, 8vw, 128px); line-height: 0.95; letter-spacing: -0.03em; margin: 24px 0 0; max-width: 16ch; }
+.contact__title em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--bg); }
+
+.contact__cta { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; margin-top: clamp(36px, 4vw, 56px); }
+/* The light button on the dark band */
+.btn--invert { background: var(--bg); color: var(--fg); font-size: clamp(16px, 1.7vw, 22px); padding: 18px 30px; }
+.contact__note { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--bg) 60%, transparent); line-height: 1.6; }
+
+/* --- Footer --- */
+.footer { margin-top: clamp(80px, 11vw, 170px); border-top: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); padding-top: clamp(40px, 5vw, 64px); }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 30px; align-items: start; }
+.footer__wordmark { font-weight: 600; font-size: clamp(56px, 12vw, 150px); letter-spacing: -0.04em; line-height: 0.78; }
+.footer__col { display: flex; flex-direction: column; gap: 12px; }
+.footer__heading { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: color-mix(in srgb, var(--bg) 50%, transparent); margin-bottom: 6px; }
+.footer__col a { font-size: 16px; color: var(--bg); text-decoration: none; transition: color 0.25s; }
+.footer__col a:hover { color: var(--accent); }
+.footer__muted { font-size: 16px; color: color-mix(in srgb, var(--bg) 70%, transparent); }
+.footer__bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: clamp(50px, 6vw, 80px); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--bg) 55%, transparent); }
+
+
+/* ----------------------------------------------------------------------------
+   13. SCROLL-REVEAL
+   Elements with class="reveal" start invisible & shifted down. script.js adds
+   the ".visible" class when they scroll into view, triggering this transition.
+   ---------------------------------------------------------------------------- */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1); }
+.reveal.visible { opacity: 1; transform: none; }
+
+
+/* ----------------------------------------------------------------------------
+   14. KEYFRAMES (named animations used above with `animation:`)
+   A keyframe says "go from this set of styles -> to that set".
+   ---------------------------------------------------------------------------- */
+@keyframes fadeUp  { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+@keyframes marquee { to { transform: translateX(-50%); } }   /* slide left by half (one full copy) */
+@keyframes pulse   { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+@keyframes bob     { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+
+/* ----------------------------------------------------------------------------
+   15. RESPONSIVE (phones & small screens)
+   A "media query" applies these rules ONLY when the screen is 760px or narrower.
+   ---------------------------------------------------------------------------- */
+@media (max-width: 760px) {
+  .nav__meta { display: none; }   /* hide the status/clock cluster to save space */
+  .nav__right { gap: 16px; }
+
+  /* Stack the case study into one column on phones */
+  .case { grid-template-columns: 1fr; gap: 22px; }
+
+  .work__head { flex-direction: column; align-items: flex-start; }
+  .work__intro { text-align: left; }
+
+  /* Stack each service: number above the text */
+  .service { grid-template-columns: 1fr; gap: 12px; }
+
+  /* The footer columns stack into a single column */
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .footer__wordmark { grid-column: 1 / -1; }   /* wordmark spans full width */
+  .footer__bottom { gap: 8px; }
+}
