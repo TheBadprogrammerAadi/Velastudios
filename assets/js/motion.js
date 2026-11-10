@@ -1,12 +1,12 @@
-// Vela motion engine — implements the data-* motion contract.
+// Velo motion engine — implements the data-* motion contract.
 // Content is visible by default; motion only takes over when GSAP loaded and
 // the visitor hasn't asked for reduced motion.
 const html = document.documentElement;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = '(hover: hover) and (pointer: fine)';
-window.velaLenis = null;
+window.veloLenis = null;
 // Set by the head script when the 2.5s safety timeout un-hid content before GSAP arrived.
-const shownLate = !!window.__velaShown;
+const shownLate = !!window.__veloShown;
 
 function splitText(el) {
   if (el.dataset.splitDone) return;
@@ -42,12 +42,12 @@ function splitText(el) {
 }
 
 function setupLenis(gsap, ScrollTrigger) {
-  if (!window.Lenis || window.velaLenis) return;
+  if (!window.Lenis || window.veloLenis) return;
   const lenis = new window.Lenis({ lerp: 0.1, smoothWheel: true });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((t) => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
-  window.velaLenis = lenis;
+  window.veloLenis = lenis;
 
   // Same-page anchor links glide via Lenis.
   document.addEventListener('click', (e) => {
