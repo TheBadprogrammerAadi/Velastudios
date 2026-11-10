@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Studio Noir · Concept project by Vela Studio</title>
+  <meta name="description" content="Cuts, colour and barbering. A concept salon website designed by Vela Studio with services, team and booking.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Studio Noir · Concept by Vela Studio">
+  <meta property="og:description" content="Cuts, colour and barbering. A concept salon website designed by Vela Studio with services, team and booking.">
+  <meta property="og:image" content="https://[DOMAIN]/assets/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Manrope:wght@400;500;600&display=swap">
+  <link rel="preload" as="image" href="img/hero.webp" imagesrcset="img/hero-640.webp 640w, img/hero-960.webp 960w, img/hero.webp 1200w" imagesizes="(max-width: 767px) 80vw, 100vw" fetchpriority="high">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="/assets/js/concept-demo.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="#top">Studio <em>Noir</em></a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#team">Team</a>
+      <a href="#gallery">Work</a>
+    </nav>
+    <button class="book" type="button" data-book>Book now</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <img class="hero-bg" src="img/hero.webp" srcset="img/hero-640.webp 640w, img/hero-960.webp 960w, img/hero.webp 1200w" sizes="(max-width: 767px) 80vw, 100vw" alt="Leather barber chair against a brick wall" width="1200" height="800" fetchpriority="high">
+      <div class="hero-text">
+        <p class="kicker">Hair · Colour · Barbering</p>
+        <h1>Cut <em>sharp.</em><br>Leave <em>certain.</em></h1>
+        <p class="lede">An appointment-only studio for precise cuts, lived-in colour and proper hot-towel shaves.</p>
+        <button class="book book--light" type="button" data-book>Book now</button>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <h2><em>The</em> menu</h2>
+      <div class="svc-cols">
+        <div>
+          <h3>Hair</h3>
+          <ul>
+            <li><span>Signature cut &amp; finish</span><b>from £48</b></li>
+            <li><span>Restyle consultation &amp; cut</span><b>from £62</b></li>
+            <li><span>Blow-dry &amp; style</span><b>from £32</b></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Colour</h3>
+          <ul>
+            <li><span>Lived-in balayage</span><b>from £145</b></li>
+            <li><span>Full colour</span><b>from £85</b></li>
+            <li><span>Gloss &amp; tone</span><b>from £40</b></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Barbering</h3>
+          <ul>
+            <li><span>Skin fade</span><b>from £30</b></li>
+            <li><span>Hot-towel shave</span><b>from £35</b></li>
+            <li><span>Beard sculpt</span><b>from £20</b></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="team">
+      <h2>The <em>chairs</em></h2>
+      <div class="team-grid">
+        <figure><img src="img/team-1.webp" alt="Portrait of stylist Mara" width="700" height="875" loading="lazy"><figcaption><b>Mara</b> Colour director</figcaption></figure>
+        <figure><img src="img/team-2.webp" alt="Portrait of barber Theo holding scissors" width="700" height="875" loading="lazy"><figcaption><b>Theo</b> Senior barber</figcaption></figure>
+        <figure><img src="img/team-3.webp" alt="Portrait of stylist Ines" width="700" height="875" loading="lazy"><figcaption><b>Ines</b> Stylist</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery" aria-label="Recent work">
+      <div class="gallery-track">
+        <img src="img/cut.webp" alt="Stylist cutting a client's hair" width="900" height="600" loading="lazy">
+        <img src="img/razor.webp" alt="Barber trimming with a straight razor" width="900" height="600" loading="lazy">
+        <img src="img/blowdry.webp" alt="Blow-dry with a round brush" width="900" height="600" loading="lazy">
+        <img src="img/scissors.webp" alt="Barber cutting with scissors" width="900" height="600" loading="lazy">
+        <img src="img/tools.webp" alt="Clippers, scissors and comb laid out" width="900" height="600" loading="lazy">
+      </div>
+    </section>
+
+    <section id="booking" class="booking">
+      <h2>Book a <em>chair</em></h2>
+      <p class="booking-sub">Pick a service and a day — we'll confirm by text.</p>
+      <button class="book book--light" type="button" data-book>Book now</button>
+      <form data-demo novalidate hidden>
+        <label>Service
+          <select name="service"><option>Signature cut &amp; finish</option><option>Lived-in balayage</option><option>Skin fade</option><option>Hot-towel shave</option></select>
+        </label>
+        <label>With
+          <select name="stylist"><option>First available</option><option>Mara</option><option>Theo</option><option>Ines</option></select>
+        </label>
+        <label>Day<input type="date" name="day"></label>
+        <label>Mobile<input type="tel" name="mobile" autocomplete="tel"></label>
+        <button class="book" type="submit">Request booking</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Studio Noir · Appointment only · <span class="concept-label">Concept project</span></p>
+  </footer>
+  <a class="concept-badge" href="/">Concept by Vela Studio</a>
+</body>
+</html>

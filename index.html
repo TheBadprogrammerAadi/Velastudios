@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vela Studio · Websites for local businesses</title>
+  <meta name="description" content="Vela Studio is a small UK web studio designing fast, beautiful websites for cafés, trades, salons and other local businesses.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vela Studio">
+  <meta property="og:description" content="Vela Studio is a small UK web studio designing fast, beautiful websites for cafés, trades, salons and other local businesses.">
+  <meta property="og:image" content="https://[DOMAIN]/assets/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&display=swap">
+  <link rel="stylesheet" href="/assets/css/vela.css">
+  <script>
+    // Hide animated elements until motion.js takes over (max 2.5s), and cover the page
+    // when arriving via a page transition (max 0.9s). Skipped for reduced motion.
+    (function () {
+      var h = document.documentElement;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      h.classList.add('motion-pending');
+      setTimeout(function () { window.__velaShown = true; h.classList.remove('motion-pending'); }, 2500);
+      try {
+        if (sessionStorage.getItem('vela-wipe')) {
+          sessionStorage.removeItem('vela-wipe');
+          h.classList.add('is-arriving');
+          setTimeout(function () { h.classList.remove('is-arriving'); }, 900);
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script type="module" src="/assets/js/motion.js"></script>
+  <script type="module" src="/assets/js/pointer.js"></script>
+  <script type="module" src="/assets/js/transitions.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <a class="wordmark" href="/" aria-label="Vela Studio home">vela</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/#work">Work</a>
+      <a href="/#about">About</a>
+      <a class="pill" href="/#contact" data-magnetic>Let's talk</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero wrap">
+      <p class="eyebrow">[YOUR CITY] · Independent web studio</p>
+      <h1 class="hero-title" data-split>
+        <span class="lt">Sites that make</span> locals love
+        <span class="rotate" data-rotate><span>cafés.</span><span>trades.</span><span>salons.</span></span>
+      </h1>
+      <p class="hero-intro" data-reveal>Vela is a small studio designing fast, beautiful websites that bring local customers through the door.</p>
+
+      <div class="tiles" role="group" aria-label="Concept projects">
+        <a class="tile" href="/work/thai-twist/" data-wipe data-cursor="View">
+          <img src="/assets/img/thai-twist.jpg" srcset="/assets/img/thai-twist-640.jpg 640w, /assets/img/thai-twist.jpg 1200w" sizes="(max-width: 767px) 80vw, 50vw" alt="Thai Twist website homepage" width="1200" height="800" fetchpriority="high">
+          <span class="tile-label"><b>Thai Twist</b><i>Takeaway · Client</i></span>
+        </a>
+        <a class="tile" href="/concepts/harbor-coffee/" data-wipe data-cursor="View">
+          <img src="/assets/img/harbor-coffee.webp" srcset="/assets/img/harbor-coffee-640.webp 640w, /assets/img/harbor-coffee-960.webp 960w, /assets/img/harbor-coffee.webp 1200w" sizes="(max-width: 767px) 80vw, 50vw" alt="Warm café interior with hanging bulbs" width="1200" height="800">
+          <span class="tile-label"><b>Harbor Coffee</b><i>Café · Concept</i></span>
+        </a>
+        <a class="tile" href="/concepts/ridgeline-plumbing/" data-wipe data-cursor="View">
+          <img src="/assets/img/ridgeline-plumbing.webp" srcset="/assets/img/ridgeline-plumbing-640.webp 640w, /assets/img/ridgeline-plumbing-960.webp 960w, /assets/img/ridgeline-plumbing.webp 1200w" sizes="(max-width: 767px) 80vw, 50vw" alt="Plumber fitting a pipe" width="1200" height="800">
+          <span class="tile-label"><b>Ridgeline Plumbing</b><i>Trades · Concept</i></span>
+        </a>
+        <a class="tile" href="/concepts/studio-noir/" data-wipe data-cursor="View">
+          <img src="/assets/img/studio-noir.webp" srcset="/assets/img/studio-noir-640.webp 640w, /assets/img/studio-noir-960.webp 960w, /assets/img/studio-noir.webp 1200w" sizes="(max-width: 767px) 80vw, 50vw" alt="Black salon chairs facing round mirrors" width="1200" height="800">
+          <span class="tile-label"><b>Studio Noir</b><i>Salon · Concept</i></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="work wrap" aria-labelledby="work-title">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">(01) Selected work</p>
+        <h2 id="work-title" class="h2"><span class="lt">One live client,</span> three concept sites.</h2>
+      </div>
+
+      <article class="work-item" data-reveal>
+        <a class="work-media" href="/work/thai-twist/" data-wipe data-parallax="0.12" data-cursor="View" tabindex="-1" aria-hidden="true">
+          <img src="/assets/img/thai-twist.jpg" srcset="/assets/img/thai-twist-640.jpg 640w, /assets/img/thai-twist.jpg 1200w" sizes="(max-width: 767px) 80vw, 50vw" alt="" width="1200" height="800" loading="lazy">
+        </a>
+        <div class="work-meta">
+          <span class="tag tag--client">Client project</span>
+          <h3 class="h3">Thai Twist</h3>
+          <p class="muted">Thai takeaway · East Grinstead</p>
+          <p>A live site for a Thai takeaway kitchen: today's opening hours at a glance, the full numbered menu, and one tap to call or WhatsApp a pre-order.</p>
+          <p class="work-links"><a class="link" href="https://thaitwist.co.uk/" target="_blank" rel="noopener">Visit live site ↗</a><a class="link" href="/work/thai-twist/">Read case study</a></p>
+        </div>
+      </article>
+
+      <article class="work-item work-item--flip" data-reveal>
+        <a class="work-media" href="/concepts/harbor-coffee/" data-wipe data-parallax="0.12" data-cursor="View" tabindex="-1" aria-hidden="true">
+          <img src="/assets/img/harbor-coffee.webp" srcset="/assets/img/harbor-coffee-640.webp 640w, /assets/img/harbor-coffee-960.webp 960w, /assets/img/harbor-coffee.webp 1200w" sizes="(max-width: 767px) 80vw, 50vw" alt="" width="1200" height="800" loading="lazy">
+        </a>
+        <div class="work-meta">
+          <span class="tag">Concept project</span>
+          <h3 class="h3">Harbor Coffee</h3>
+          <p class="muted">Neighbourhood café</p>
+          <p>A warm, photo-led site that puts opening hours, the menu and directions one tap away for regulars and passers-by.</p>
+          <p class="work-links"><a class="link" href="/concepts/harbor-coffee/">View live site</a><a class="link" href="/work/harbor-coffee/">Read case study</a></p>
+        </div>
+      </article>
+
+      <article class="work-item" data-reveal>
+        <a class="work-media" href="/concepts/ridgeline-plumbing/" data-wipe data-parallax="0.12" data-cursor="View" tabindex="-1" aria-hidden="true">
+          <img src="/assets/img/ridgeline-plumbing.webp" srcset="/assets/img/ridgeline-plumbing-640.webp 640w, /assets/img/ridgeline-plumbing-960.webp 960w, /assets/img/ridgeline-plumbing.webp 1200w" sizes="(max-width: 767px) 80vw, 50vw" alt="" width="1200" height="800" loading="lazy">
+        </a>
+        <div class="work-meta">
+          <span class="tag">Concept project</span>
+          <h3 class="h3">Ridgeline Plumbing</h3>
+          <p class="muted">Plumbing &amp; heating</p>
+          <p>A bold, no-nonsense site built around one job: getting the phone to ring, day or night.</p>
+          <p class="work-links"><a class="link" href="/concepts/ridgeline-plumbing/">View live site</a><a class="link" href="/work/ridgeline-plumbing/">Read case study</a></p>
+        </div>
+      </article>
+
+      <article class="work-item work-item--flip" data-reveal>
+        <a class="work-media" href="/concepts/studio-noir/" data-wipe data-parallax="0.12" data-cursor="View" tabindex="-1" aria-hidden="true">
+          <img src="/assets/img/studio-noir.webp" srcset="/assets/img/studio-noir-640.webp 640w, /assets/img/studio-noir-960.webp 960w, /assets/img/studio-noir.webp 1200w" sizes="(max-width: 767px) 80vw, 50vw" alt="" width="1200" height="800" loading="lazy">
+        </a>
+        <div class="work-meta">
+          <span class="tag">Concept project</span>
+          <h3 class="h3">Studio Noir</h3>
+          <p class="muted">Hair salon &amp; barbers</p>
+          <p>A dark, editorial site that sells the look first and makes booking the obvious next step.</p>
+          <p class="work-links"><a class="link" href="/concepts/studio-noir/">View live site</a><a class="link" href="/work/studio-noir/">Read case study</a></p>
+        </div>
+      </article>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" data-marquee aria-hidden="true">
+      <div class="marquee-track">
+        <span>Cafés</span><span>Plumbers</span><span>Salons</span><span>Barbers</span><span>Bakeries</span><span>Electricians</span><span>Florists</span>
+      </div>
+    </div>
+
+    <!-- OFFER -->
+    <section id="offer" class="offer wrap" aria-labelledby="offer-title">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">(02) What you get</p>
+        <h2 id="offer-title" class="h2"><span class="lt">Everything a local business</span> actually needs.</h2>
+      </div>
+      <ol class="offer-list">
+        <li data-reveal>Custom design — no templates</li>
+        <li data-reveal>Works beautifully on phones</li>
+        <li data-reveal>Google Business profile setup</li>
+        <li data-reveal>Call, contact and booking buttons</li>
+        <li data-reveal>Basic SEO so locals find you</li>
+        <li data-reveal>Launch in about 2 weeks</li>
+        <li data-reveal>Small edits after launch</li>
+      </ol>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="process wrap" aria-labelledby="process-title">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">(03) How it works</p>
+        <h2 id="process-title" class="h2"><span class="lt">Simple from</span> first call to launch.</h2>
+      </div>
+      <ol class="steps">
+        <li data-reveal><span class="step-n">01</span><h3 class="h3">Free call</h3><p>We talk about your business, your customers and what the site needs to do. No jargon, no pressure.</p></li>
+        <li data-reveal><span class="step-n">02</span><h3 class="h3">Design</h3><p>I design and build your site, then share a live preview so you can ask for changes before anything goes public.</p></li>
+        <li data-reveal><span class="step-n">03</span><h3 class="h3">Launch</h3><p>Your site goes live on your own domain, set up on Google and ready for customers.</p></li>
+      </ol>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about wrap" aria-labelledby="about-title">
+      <div class="about-photo" data-wipe>
+        <div class="photo-slot">[YOUR PHOTO]</div>
+      </div>
+      <div class="about-text" data-reveal>
+        <p class="eyebrow">(04) About</p>
+        <h2 id="about-title" class="h2"><span class="lt">Hi, I'm</span> [YOUR NAME].</h2>
+        <p>[ABOUT TEXT]</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact wrap" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="display" data-split><span class="lt">Let's make</span> yours next.</h2>
+      <div class="contact-grid">
+        <form class="form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-reveal>
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden-field"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <label>Your name<input name="name" autocomplete="name" required></label>
+          <label>Business name<input name="business" autocomplete="organization" required></label>
+          <label>Email<input type="email" name="email" autocomplete="email" required></label>
+          <label>Phone <span class="muted">(optional)</span><input type="tel" name="phone" autocomplete="tel"></label>
+          <label class="full">What do you need?<textarea name="message" rows="4" required></textarea></label>
+          <button class="pill pill--solid" type="submit" data-magnetic>Send message</button>
+        </form>
+        <div class="direct" data-reveal>
+          <p class="muted">Rather talk now?</p>
+          <a class="big-link" href="tel:[YOUR PHONE]">[YOUR PHONE]</a>
+          <a class="big-link" href="mailto:[YOUR EMAIL]">[YOUR EMAIL]</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <a class="wordmark wordmark--big" href="/">vela</a>
+    <div class="footer-cols">
+      <p>[YOUR CITY], UK</p>
+      <p><a href="mailto:[YOUR EMAIL]">[YOUR EMAIL]</a><br><a href="tel:[YOUR PHONE]">[YOUR PHONE]</a></p>
+      <p><a href="[YOUR INSTAGRAM]">Instagram</a></p>
+      <p class="muted">© Vela Studio</p>
+    </div>
+  </footer>
+
+  <a class="cta-sticky" href="#contact">Let's talk</a>
+</body>
+</html>

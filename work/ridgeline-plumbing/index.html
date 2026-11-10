@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ridgeline Plumbing case study · Vela Studio</title>
+  <meta name="description" content="Concept project: a bold emergency plumber website built around one job — getting the phone to ring, day or night.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ridgeline Plumbing case study · Vela Studio">
+  <meta property="og:description" content="Concept project: a bold emergency plumber website built around one job — getting the phone to ring, day or night.">
+  <meta property="og:image" content="https://[DOMAIN]/assets/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&display=swap">
+  <link rel="stylesheet" href="/assets/css/vela.css">
+  <script>
+    // Hide animated elements until motion.js takes over (max 2.5s), and cover the page
+    // when arriving via a page transition (max 0.9s). Skipped for reduced motion.
+    (function () {
+      var h = document.documentElement;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      h.classList.add('motion-pending');
+      setTimeout(function () { window.__velaShown = true; h.classList.remove('motion-pending'); }, 2500);
+      try {
+        if (sessionStorage.getItem('vela-wipe')) {
+          sessionStorage.removeItem('vela-wipe');
+          h.classList.add('is-arriving');
+          setTimeout(function () { h.classList.remove('is-arriving'); }, 900);
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script type="module" src="/assets/js/motion.js"></script>
+  <script type="module" src="/assets/js/pointer.js"></script>
+  <script type="module" src="/assets/js/transitions.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <a class="wordmark" href="/" aria-label="Vela Studio home">vela</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/#work">Work</a>
+      <a href="/#about">About</a>
+      <a class="pill" href="/#contact" data-magnetic>Let's talk</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="cs-hero wrap">
+      <p class="eyebrow">Concept project · Trades</p>
+      <h1 class="cs-title" data-split>Ridgeline Plumbing</h1>
+      <p class="cs-brief" data-reveal>An emergency plumber whose customers are stressed, on a phone, and need to call within seconds.</p>
+      <dl class="cs-meta" data-reveal>
+        <div><dt>Business</dt><dd>Trades</dd></div>
+        <div><dt>Scope</dt><dd>One-page website</dd></div>
+        <div><dt>Status</dt><dd>Concept project</dd></div>
+        <a class="pill pill--solid" href="/concepts/ridgeline-plumbing/" data-magnetic>View live site</a>
+      </dl>
+      <div class="cs-shots">
+        <a class="cs-shot" href="/concepts/ridgeline-plumbing/" data-wipe data-cursor="View" tabindex="-1" aria-hidden="true">
+          <img src="/assets/img/work/ridgeline-plumbing-desktop.jpg" alt="" width="1440" height="900" loading="lazy">
+        </a>
+        <div class="cs-shot cs-shot--phone" data-wipe>
+          <img src="/assets/img/work/ridgeline-plumbing-phone.jpg" alt="Ridgeline Plumbing on a phone" width="780" height="1688" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-body wrap">
+      <div data-reveal>
+        <h2>What the site does</h2>
+        <ul>
+          <li>A "Call now" button stays on screen the whole time on phones.</li>
+          <li>A 24/7 emergency banner answers the first question before it is asked.</li>
+          <li>Services in plain words, plus a list of towns so customers know they are covered.</li>
+          <li>A quote request form for jobs that can wait until tomorrow.</li>
+        </ul>
+      </div>
+      <div data-reveal>
+        <h2>Design choices</h2>
+        <dl>
+          <div><dt>Type</dt><dd>Archivo, stretched wide and heavy — loud, solid and impossible to miss.</dd></div>
+          <div><dt>Colour</dt><dd>Deep navy with safety-sign yellow for anything you can tap.</dd></div>
+          <div><dt>Layout</dt><dd>High contrast and big tap targets, built for one-handed use in a hurry.</dd></div>
+          <div><dt>Motion</dt><dd>Quick and punchy — nothing that delays the phone number.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <a class="cs-next" href="/work/studio-noir/" data-cursor="Next">
+        <span class="eyebrow">Next case study</span>
+        <span class="display">Studio Noir →</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <a class="wordmark wordmark--big" href="/">vela</a>
+    <div class="footer-cols">
+      <p>[YOUR CITY], UK</p>
+      <p><a href="mailto:[YOUR EMAIL]">[YOUR EMAIL]</a><br><a href="tel:[YOUR PHONE]">[YOUR PHONE]</a></p>
+      <p><a href="[YOUR INSTAGRAM]">Instagram</a></p>
+      <p class="muted">© Vela Studio</p>
+    </div>
+  </footer>
+
+  <a class="cta-sticky" href="/#contact">Let's talk</a>
+</body>
+</html>

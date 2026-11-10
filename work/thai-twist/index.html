@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thai Twist case study · Vela Studio</title>
+  <meta name="description" content="Client project: the live website for Thai Twist, a Thai takeaway in East Grinstead, built around pre-ordering by phone or WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Thai Twist case study · Vela Studio">
+  <meta property="og:description" content="Client project: the live website for Thai Twist, a Thai takeaway in East Grinstead, built around pre-ordering by phone or WhatsApp.">
+  <meta property="og:image" content="https://[DOMAIN]/assets/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&display=swap">
+  <link rel="stylesheet" href="/assets/css/vela.css">
+  <script>
+    // Hide animated elements until motion.js takes over (max 2.5s), and cover the page
+    // when arriving via a page transition (max 0.9s). Skipped for reduced motion.
+    (function () {
+      var h = document.documentElement;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      h.classList.add('motion-pending');
+      setTimeout(function () { window.__velaShown = true; h.classList.remove('motion-pending'); }, 2500);
+      try {
+        if (sessionStorage.getItem('vela-wipe')) {
+          sessionStorage.removeItem('vela-wipe');
+          h.classList.add('is-arriving');
+          setTimeout(function () { h.classList.remove('is-arriving'); }, 900);
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script type="module" src="/assets/js/motion.js"></script>
+  <script type="module" src="/assets/js/pointer.js"></script>
+  <script type="module" src="/assets/js/transitions.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <a class="wordmark" href="/" aria-label="Vela Studio home">vela</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/#work">Work</a>
+      <a href="/#about">About</a>
+      <a class="pill" href="/#contact" data-magnetic>Let's talk</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="cs-hero wrap">
+      <p class="eyebrow">Client project · Thai takeaway, East Grinstead</p>
+      <h1 class="cs-title" data-split>Thai Twist</h1>
+      <p class="cs-brief" data-reveal>A Thai takeaway kitchen in a car park on London Road. Most customers order by phone, so the website has one job: make pre-ordering effortless.</p>
+      <dl class="cs-meta" data-reveal>
+        <div><dt>Business</dt><dd>Thai takeaway</dd></div>
+        <div><dt>Scope</dt><dd>Three-page website</dd></div>
+        <div><dt>Status</dt><dd>Live at thaitwist.co.uk</dd></div>
+      </dl>
+      <p data-reveal><a class="pill pill--solid" href="https://thaitwist.co.uk/" target="_blank" rel="noopener" data-magnetic>Visit live site ↗</a></p>
+      <div class="cs-shots">
+        <a class="cs-shot" href="https://thaitwist.co.uk/" target="_blank" rel="noopener" data-wipe data-cursor="Visit" tabindex="-1" aria-hidden="true">
+          <img src="/assets/img/work/thai-twist-desktop.jpg" alt="" width="1440" height="900" loading="lazy">
+        </a>
+        <div class="cs-shot cs-shot--phone" data-wipe>
+          <img src="/assets/img/work/thai-twist-phone.jpg" alt="Thai Twist website on a phone" width="780" height="1688" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-body wrap">
+      <div data-reveal>
+        <h2>What the site does</h2>
+        <ul>
+          <li>Shows whether the kitchen is open right now, and when it next opens, the moment the page loads.</li>
+          <li>Puts the full menu online, numbered exactly like the paper leaflet, so regulars can order by number.</li>
+          <li>Makes calling or WhatsApping a pre-order one tap from every page.</li>
+          <li>A dedicated Find us page with a map, because the kitchen is in a car park and easy to miss.</li>
+        </ul>
+      </div>
+      <div data-reveal>
+        <h2>Design choices</h2>
+        <dl>
+          <div><dt>Type</dt><dd>Fraunces in bold italics for the headlines, warm and confident, with a touch of Thai script for authenticity.</dd></div>
+          <div><dt>Colour</dt><dd>Near-black with chilli red and a golden yellow taken from the brand, so food photos glow.</dd></div>
+          <div><dt>Layout</dt><dd>Phone-first, with the call button always in reach and the menu split into clear sections.</dd></div>
+          <div><dt>Detail</dt><dd>A rolling ticker repeats the essentials: where to find them, the phone number, and that everything is cooked fresh.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <a class="cs-next" href="/work/harbor-coffee/" data-cursor="Next">
+        <span class="eyebrow">Next case study</span>
+        <span class="display">Harbor Coffee →</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <a class="wordmark wordmark--big" href="/">vela</a>
+    <div class="footer-cols">
+      <p>[YOUR CITY], UK</p>
+      <p><a href="mailto:[YOUR EMAIL]">[YOUR EMAIL]</a><br><a href="tel:[YOUR PHONE]">[YOUR PHONE]</a></p>
+      <p><a href="[YOUR INSTAGRAM]">Instagram</a></p>
+      <p class="muted">© Vela Studio</p>
+    </div>
+  </footer>
+
+  <a class="cta-sticky" href="/#contact">Let's talk</a>
+</body>
+</html>
