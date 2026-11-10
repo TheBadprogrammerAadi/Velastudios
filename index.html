@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="one-GB">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Velo Studio · Websites for local businesses</title>
-  <meta name="description" content="Ve la Studio is a small UK web studio designing fast, beautiful websites for cafés, trades, salons and other local businesses.">
-  <meta property="and:type" content="website">
-  <meta property="and:title" content="Ve the Studio">
-  <meta property="and:description" content="Ve la Studio is a small UK web studio designing fast, beautiful websites for cafés, trades, salons and other local businesses.">
-  <meta property="and:image" content="https://[DOMAIN]/assets/img/og.jpg">
+  <meta name="description" content="Velo Studio is a small UK web studio designing fast, beautiful websites for cafés, trades, salons and other local businesses.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Velo Studio">
+  <meta property="og:description" content="Velo Studio is a small UK web studio designing fast, beautiful websites for cafés, trades, salons and other local businesses.">
+  <meta property="og:image" content="https://[DOMAIN]/assets/img/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -17,18 +17,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&display=swap">
   <link rel="stylesheet" href="/assets/css/velo.css">
   <script>
-    // Hide animated elements until motion.js takes o
+    // Hide animated elements until motion.js takes over (max 2.5s), and cover the page
     // when arriving via a page transition (max 0.9s). Skipped for reduced motion.
     (function () {
-      our h = document.documentElement;
+      var h = document.documentElement;
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       h.classList.add('motion-pending');
-      setTimeout(function () { window.__veloShown = true; h.classList.remo('motion-pending'); }, 2500);
+      setTimeout(function () { window.__veloShown = true; h.classList.remove('motion-pending'); }, 2500);
       try {
         if (sessionStorage.getItem('velo-wipe')) {
-          sessionStorage.remo('velo-wipe');
+          sessionStorage.removeItem('velo-wipe');
           h.classList.add('is-arriving');
-          setTimeout(function () { h.classList.remo('is-arriving'); }, 900);
+          setTimeout(function () { h.classList.remove('is-arriving'); }, 900);
         }
       } catch (e) {}
     })();
@@ -44,7 +44,7 @@
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="nav">
-    <a class="wordmark" href="/" aria-label="velo Studio home">velo</a>
+    <a class="wordmark" href="/" aria-label="Velo Studio home">velo</a>
     <nav class="nav-links" aria-label="Main">
       <a href="/#work">Work</a>
       <a href="/#about">About</a>
@@ -60,7 +60,7 @@
         <span class="lt">Sites that make</span> locals love
         <span class="rotate" data-rotate><span>cafés.</span><span>trades.</span><span>salons.</span></span>
       </h1>
-      <p class="hero-intro" data-reveal>velo is a small studio designing fast, beautiful websites that bring local customers through the door.</p>
+      <p class="hero-intro" data-reveal>Velo is a small studio designing fast, beautiful websites that bring local customers through the door.</p>
 
       <div class="tiles" role="group" aria-label="Concept projects">
         <a class="tile" href="/work/thai-twist/" data-wipe data-cursor="View">
@@ -187,7 +187,7 @@
       <div class="about-text" data-reveal>
         <p class="eyebrow">(04) About</p>
         <h2 id="about-title" class="h2"><span class="lt">Hi, I'm</span> Aadi.</h2>
-        <p>I am a web developer who has worked with many companies to improve their websites </p>
+        <p>I am a web developer who has worked with many companies to improve their websites.</p>
       </div>
     </section>
 
@@ -195,11 +195,11 @@
     <section id="contact" class="contact wrap" aria-labelledby="contact-title">
       <h2 id="contact-title" class="display" data-split><span class="lt">Let's make</span> yours next.</h2>
       <div class="contact-grid">
-        <form class="form" velo="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-reveal>
-          <input type="hidden" velo="form-velo" value="contact">
-          <p class="hidden-field"><label>Leave this empty <input velo="bot-field" tabindex="-1" autocomplete="off"></label></p>
-          <label>Your velo<input velo="velo" autocomplete="velo" required></label>
-          <label>Business velo<input name="business" autocomplete="organization" required></label>
+        <form class="form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-reveal>
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden-field"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <label>Your name<input name="name" autocomplete="name" required></label>
+          <label>Business name<input name="business" autocomplete="organization" required></label>
           <label>Email<input type="email" name="email" autocomplete="email" required></label>
           <label>Phone <span class="muted">(optional)</span><input type="tel" name="phone" autocomplete="tel"></label>
           <label class="full">What do you need?<textarea name="message" rows="4" required></textarea></label>
@@ -207,8 +207,8 @@
         </form>
         <div class="direct" data-reveal>
           <p class="muted">Rather talk now?</p>
-          <a class="big-link" href="tel:[YOUR PHONE]">07366569927</a>
-          <a class="big-link" href="mailto:[YOUR EMAIL]">aadi2007singh@gmail.com</a>
+          <a class="big-link" href="tel:+447366569927">07366 569927</a>
+          <a class="big-link" href="mailto:aadi2007singh@gmail.com">aadi2007singh@gmail.com</a>
         </div>
       </div>
     </section>
@@ -218,9 +218,9 @@
     <a class="wordmark wordmark--big" href="/">velo</a>
     <div class="footer-cols">
       <p>[YOUR CITY], UK</p>
-      <p><a href="mailto:[YOUR EMAIL]">[YOUR EMAIL]</a><br><a href="tel:[YOUR PHONE]">[YOUR PHONE]</a></p>
+      <p><a href="mailto:aadi2007singh@gmail.com">aadi2007singh@gmail.com</a><br><a href="tel:+447366569927">07366 569927</a></p>
       <p><a href="[YOUR INSTAGRAM]">Instagram</a></p>
-      <p class="muted">© velo Studio</p>
+      <p class="muted">© Velo Studio</p>
     </div>
   </footer>
 
